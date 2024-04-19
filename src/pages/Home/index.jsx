@@ -1,5 +1,11 @@
+import { SectionOne } from '../../components';
+
 const index = () => {
-    return <div>Home Page</div>;
+    return (
+        <div className="mt-10 home">
+            <SectionOne />
+        </div>
+    );
 };
 
 export default index;
