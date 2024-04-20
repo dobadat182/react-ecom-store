@@ -6,7 +6,12 @@ export default {
             center: true,
             padding: '2rem',
         },
-        extend: {},
+        extend: {
+            fontFamily: {
+                satoshi: ['Satoshi', 'sans-serif'],
+                inter: ['Inter', 'sans-serif'],
+            },
+        },
     },
     plugins: [],
 };
