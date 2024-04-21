@@ -9,7 +9,7 @@ const index = (props) => {
     return (
         <section>
             <div className="container">
-                <div className="flex items-center justify-between mb-5">
+                <div className="flex items-center justify-between mb-8">
                     <h2 className="text-3xl font-semibold uppercase">
                         {title || 'Title Section'}
                     </h2>

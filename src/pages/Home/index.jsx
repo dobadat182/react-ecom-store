@@ -1,4 +1,10 @@
-import { SectionOne, SectionThree, SectionTwo, Spacer } from '../../components';
+import {
+    SectionFour,
+    SectionOne,
+    SectionThree,
+    SectionTwo,
+    Spacer,
+} from '../../components';
 
 const index = () => {
     return (
@@ -13,6 +19,9 @@ const index = () => {
             <Spacer />
 
             <SectionThree title={'Pre-workout'} />
+            <Spacer />
+
+            <SectionFour />
             <Spacer />
         </div>
     );
