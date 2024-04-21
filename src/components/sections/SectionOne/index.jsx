@@ -13,7 +13,7 @@ function index() {
         <Section>
             <div className="container flex gap-5">
                 <div className="basis-2/3">
-                    <Splide aria-label="My Favorite Images">
+                    <Splide aria-label="">
                         <SplideSlide className={'bg-slate-50'}>
                             <div className="flex items-center justify-center h-full">
                                 <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
