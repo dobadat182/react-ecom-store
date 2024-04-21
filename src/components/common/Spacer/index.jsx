@@ -1,5 +1,5 @@
 const index = (props) => {
-    return <div className={props.className || 'p-5'}></div>;
+    return <div className={props.className || 'p-10'}></div>;
 };
 
 export default index;
