@@ -1,4 +1,5 @@
 import { ProductCard } from '../..';
+import { Link } from 'react-router-dom';
 
 const index = () => {
     return (
@@ -16,12 +17,12 @@ const index = () => {
                 </div>
 
                 <div className="flex justify-center">
-                    <a
-                        href="/shop"
+                    <Link
+                        to="/shop"
                         className="inline-block px-20 py-2 mx-auto mt-12 text-sm font-medium rounded-full bg-slate-950 text-slate-50"
                     >
                         Mua ngay
-                    </a>
+                    </Link>
                 </div>
             </div>
         </section>
