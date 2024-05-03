@@ -1,5 +1,5 @@
 import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
-import { Home, Login, Products } from '@/pages';
+import { Home, Login, Shop } from '@/pages';
 
 const Routers = () => {
     return (
@@ -8,9 +8,8 @@ const Routers = () => {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />
-                    <Route path="/shop" element={<Products />} />
+                    <Route path="/shop" element={<Shop />} />
 
-                    <Route path="/products/:productId" />
                     {/* <Route path="*" element={<ErrorPage />} /> */}
                 </Routes>
             </Router>
