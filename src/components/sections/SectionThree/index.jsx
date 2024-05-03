@@ -10,9 +10,10 @@ const index = (props) => {
         <section>
             <div className="container">
                 <div className="flex items-center justify-between mb-8">
-                    <h2 className="text-3xl font-semibold uppercase">
+                    <h2 className="pb-2 mt-10 text-3xl font-semibold tracking-tight transition-colors border-b scroll-m-20 first:mt-0">
                         {title || 'Title Section'}
                     </h2>
+
                     <a className="flex items-center" href="/tat-ca">
                         <span>Xem thêm</span>
                         <ArrowRight className="inline-block w-4 ml-2" />

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const ProductCard = styled.div``;
+
 const index = () => {
     return (
         <ProductCard className="product-card">
