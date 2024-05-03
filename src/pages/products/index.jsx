@@ -7,7 +7,7 @@ const index = () => {
         <div className="container px-5 shop-page">
             <div className="row">
                 <h1 className="mb-10 text-4xl font-extrabold tracking-tight text-center mt-14 scroll-m-20 lg:text-5xl">
-                    Shop
+                    Shop Page
                 </h1>
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-x-5 gap-y-8 md:gap-y-10">
