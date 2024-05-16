@@ -1,3 +1,10 @@
+import {
+    SignInButton,
+    SignedIn,
+    SignedOut,
+    UserButton,
+} from '@clerk/clerk-react';
+
 const Navbar = () => {
     return (
         <nav className="sticky top-0 z-20 w-full bg-white border-b border-gray-200 dark:bg-gray-900 start-0 dark:border-gray-600">
@@ -16,13 +23,12 @@ const Navbar = () => {
                     </span>
                 </a>
                 <div className="flex space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
-                    <a
-                        href="/login"
-                        type="button"
-                        className="px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                    >
-                        Get started
-                    </a>
+                    <SignedOut>
+                        <SignInButton className="px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" />
+                    </SignedOut>
+                    <SignedIn className="px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        <UserButton />
+                    </SignedIn>
                     <button
                         data-collapse-toggle="navbar-sticky"
                         type="button"
