@@ -4,8 +4,9 @@ import ProductCard from '@/components/common/ProductCard/ProductCard';
 
 const ProductByCollection = (props) => {
     const { title } = props;
+    const data = props.data;
 
-    console.log(props);
+    console.log(props.data);
     return (
         <section>
             <div className="container px-0">
@@ -39,9 +40,14 @@ const ProductByCollection = (props) => {
                         }}
                         aria-label="My Favorite Images"
                     >
-                        {[...Array(8)].map((x, i) => (
-                            <SplideSlide key={i}>
-                                <ProductCard />
+                        {data?.map((product) => (
+                            <SplideSlide key={product.id}>
+                                <ProductCard
+                                    title={product.title}
+                                    image={product.thumbnail}
+                                    price={product.price}
+                                    description={product.description}
+                                />
                             </SplideSlide>
                         ))}
                     </Splide>

@@ -14,18 +14,18 @@ const ProductCard = (props) => {
                 <img className="object-cover w-full h-full" src={image} />
             </a>
             <div className="mt-3 product-card-body">
-                <a
-                    href="#"
-                    className="text-sm font-normal md:text-lg line-clamp-2 min-h-14"
-                >
+                <a className="text-xl font-semibold tracking-tight scroll-m-20 min-h-14">
                     {title}
                 </a>
 
+                <p className="leading-7 [&:not(:first-child)]:mt-6 line-clamp-2	">
+                    {description}
+                </p>
                 <div className="mt-1 product__price">
-                    <span className="text-sm font-normal md:text-base product__price--regular">
+                    <span className="text-2xl font-semibold tracking-tight scroll-m-20">
                         {price} $
                     </span>
-                    <del className="ml-1 text-xs font-normal md:ml-2 md:text-sm product__price--sale text-slate-400">
+                    <del className="ml-1 text-2xl font-semibold tracking-tight scroll-m-20 text-slate-400">
                         {/* 2.050.000đ */}
                     </del>
                 </div>

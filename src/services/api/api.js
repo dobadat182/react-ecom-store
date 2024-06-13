@@ -1,37 +1,34 @@
+// src/services/api.js
 import axios from 'axios';
 
-// Tạo Axios instance với cấu hình cơ bản
 const api = axios.create({
-    baseURL: 'https://dummyjson.com/', // URL cơ sở cho tất cả các yêu cầu
-    timeout: 10000, // Thời gian chờ tối đa cho mỗi yêu cầu là 10 giây
+    baseURL: 'https://dummyjson.com/',
     headers: {
         'Content-Type': 'application/json',
-        // Các header tùy chỉnh khác nếu cần
     },
+    timeout: 10000, // Optional: Set a timeout of 10 seconds
 });
 
-// Thêm Interceptor để xử lý yêu cầu trước khi gửi và phản hồi sau khi nhận
+// Optional: Add interceptors
 api.interceptors.request.use(
     (config) => {
-        // Thêm logic xử lý trước khi gửi yêu cầu
-        console.log('Request Config:', config);
+        // Modify request config before sending it
+        // For example, add authorization token
         return config;
     },
     (error) => {
-        // Xử lý lỗi khi gửi yêu cầu
+        // Handle request error
         return Promise.reject(error);
     }
 );
 
 api.interceptors.response.use(
     (response) => {
-        // Xử lý phản hồi thành công
-        console.log('Response:', response);
+        // Modify response before returning it
         return response;
     },
     (error) => {
-        // Xử lý lỗi khi nhận phản hồi
-        console.error('Response Error:', error);
+        // Handle response error
         return Promise.reject(error);
     }
 );

@@ -2,11 +2,28 @@ import Spacer from '@/components/common/Spacer';
 import CollectionBySeason from '@/components/sections/CollectionBySeason/CollectionBySeason';
 import Hero from '@/components/sections/Hero/Hero';
 import ProductByCollection from '@/components/sections/ProductByCollection/ProductByCollection';
+import api from '@/services/api/api';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 const Home = () => {
-    useEffect(() => {}, []);
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(
+                    'https://dummyjson.com/products/category/motorcycle'
+                );
+                setProducts(response.data.products); // Đảm bảo dữ liệu cũ không bị ghi đè
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
+    }, []); // Đảm bảo chỉ gọi một lần khi component mount
+
     return (
         <div className="mt-10 home">
             <Hero />
@@ -15,7 +32,7 @@ const Home = () => {
             <CollectionBySeason />
             <Spacer />
 
-            <ProductByCollection title={'Bổ sung Protein'} />
+            <ProductByCollection title={'Bổ sung Protein'} data={products} />
             <Spacer />
 
             <ProductByCollection title={'Pre-workout'} />

@@ -1,5 +1,4 @@
 import ProductCard from '@/components/common/ProductCard/ProductCard';
-import { SkeletonProductCart } from '@/components/common/Skeleton';
 import { Button } from '@/components/ui/button';
 
 const Shop = () => {
@@ -11,7 +10,6 @@ const Shop = () => {
                 </h1>
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-x-5 gap-y-8 md:gap-y-10">
-                    <SkeletonProductCart />
                     {[...Array(11)].map((x, i) => (
                         <ProductCard key={i} />
                     ))}
