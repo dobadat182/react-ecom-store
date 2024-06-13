@@ -8,7 +8,7 @@ const Section = styled.section`
     }
 `;
 
-function index() {
+function Hero() {
     return (
         <Section>
             <div className="container flex gap-5">
@@ -48,4 +48,4 @@ function index() {
     );
 }
 
-export default index;
+export default Hero;

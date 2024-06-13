@@ -1,8 +1,8 @@
-import { ProductCard } from '@/components';
+import ProductCard from '@/components/common/ProductCard/ProductCard';
 import { SkeletonProductCart } from '@/components/common/Skeleton';
 import { Button } from '@/components/ui/button';
 
-const index = () => {
+const Shop = () => {
     return (
         <div className="container px-5 shop-page">
             <div className="row">
@@ -25,4 +25,4 @@ const index = () => {
     );
 };
 
-export default index;
+export default Shop;

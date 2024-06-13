@@ -1,6 +1,6 @@
 import { Skeleton } from '@/components/ui/skeleton';
 
-const index = () => {
+const ProductCard = () => {
     return (
         <div className="skeleton-product-card">
             <Skeleton className="block overflow-hidden h-52 product-card--top md:h-80 bg-slate-100 rounded-2xl" />
@@ -21,4 +21,4 @@ const index = () => {
     );
 };
 
-export default index;
+export default ProductCard;

@@ -1,5 +1,5 @@
-const index = (props) => {
+const Spacer = (props) => {
     return <div className={props.className || 'p-10'}></div>;
 };
 
-export default index;
+export default Spacer;

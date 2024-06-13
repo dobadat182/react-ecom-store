@@ -3,7 +3,7 @@ import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
 
 const Section = styled.section``;
 
-const index = () => {
+const CollectionBySeason = () => {
     return (
         <Section>
             <div className="container">
@@ -28,4 +28,4 @@ const index = () => {
     );
 };
 
-export default index;
+export default CollectionBySeason;

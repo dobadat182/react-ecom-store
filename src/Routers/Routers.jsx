@@ -1,5 +1,8 @@
 import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
-import { Home, Login, Shop } from '@/pages';
+
+import Login from '@/pages/Login/Login';
+import Shop from '@/pages/Shop/Shop';
+import Home from '@/pages/Home/Home';
 
 const Routers = () => {
     return (

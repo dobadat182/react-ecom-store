@@ -1,13 +1,13 @@
 import { ArrowRight } from 'lucide-react';
-import { ProductCard } from '../..';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
+import ProductCard from '@/components/common/ProductCard/ProductCard';
 
-const index = (props) => {
+const ProductByCollection = (props) => {
     const { title } = props;
 
     console.log(props);
     return (
-        <section id="blockThree">
+        <section>
             <div className="container px-0">
                 <div className="flex items-center justify-between px-5 mb-8">
                     <h2 className="pb-2 mt-10 text-3xl font-semibold tracking-tight transition-colors border-b scroll-m-20 first:mt-0">
@@ -51,4 +51,4 @@ const index = (props) => {
     );
 };
 
-export default index;
+export default ProductByCollection;
