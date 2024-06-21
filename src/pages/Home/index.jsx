@@ -2,7 +2,6 @@ import Spacer from '@/components/common/Spacer';
 import CollectionBySeason from '@/components/sections/CollectionBySeason/CollectionBySeason';
 import Hero from '@/components/sections/Hero/Hero';
 import ProductByCollection from '@/components/sections/ProductByCollection/ProductByCollection';
-import api from '@/services/api/api';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 

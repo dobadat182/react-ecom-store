@@ -8,7 +8,7 @@ import {
 const Navbar = () => {
     return (
         <nav className="sticky top-0 z-20 w-full bg-white border-b border-gray-200 dark:bg-gray-900 start-0 dark:border-gray-600">
-            <div className="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto">
+            <div className="container flex flex-wrap items-center justify-between p-4 mx-auto">
                 <a
                     href="/"
                     className="flex items-center space-x-3 rtl:space-x-reverse"
@@ -18,9 +18,7 @@ const Navbar = () => {
                         className="h-8"
                         alt="Flowbite Logo"
                     />
-                    <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-                        Flowbite
-                    </span>
+                    <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"></span>
                 </a>
                 <div className="flex space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
                     <SignedOut>
@@ -66,6 +64,14 @@ const Navbar = () => {
                                 aria-current="page"
                             >
                                 Home
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="/todo"
+                                className="block px-3 py-2 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                            >
+                                Todo
                             </a>
                         </li>
                         <li>

@@ -1,8 +1,7 @@
 import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
 
-import Login from '@/pages/Login/Login';
-import Shop from '@/pages/Shop/Shop';
-import Home from '@/pages/Home/Home';
+import Shop from '@/pages/Shop';
+import { Home, Todo } from '@/pages';
 
 const Routers = () => {
     return (
@@ -10,7 +9,7 @@ const Routers = () => {
             <Router>
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/login" element={<Login />} />
+                    <Route path="/todo" element={<Todo />} />
                     <Route path="/shop" element={<Shop />} />
 
                     {/* <Route path="*" element={<ErrorPage />} /> */}
