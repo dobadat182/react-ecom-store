@@ -1,6 +1,6 @@
 import { ArrowRight } from 'lucide-react';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
-import ProductCard from '@/components/common/ProductCard/ProductCard';
+import { ProductCard } from '@/features/products';
 
 const ProductByCollection = (props) => {
     const { title } = props;

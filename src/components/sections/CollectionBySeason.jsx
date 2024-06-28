@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
 
 const Section = styled.section``;
 

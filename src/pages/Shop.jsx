@@ -1,5 +1,5 @@
-import ProductCard from '@/components/common/ProductCard/ProductCard';
 import { Button } from '@/components/ui/button';
+import { ProductCard } from '@/features/products';
 
 const Shop = () => {
     return (

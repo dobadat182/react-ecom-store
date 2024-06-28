@@ -1,7 +1,8 @@
-import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
-
+import Features from '@/pages/Features';
+import Home from '@/pages/Home';
 import Shop from '@/pages/Shop';
-import { Home, Todo } from '@/pages';
+
+import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
 
 const Routers = () => {
     return (
@@ -9,7 +10,7 @@ const Routers = () => {
             <Router>
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/todo" element={<Todo />} />
+                    <Route path="/todo" element={<Features />} />
                     <Route path="/shop" element={<Shop />} />
 
                     {/* <Route path="*" element={<ErrorPage />} /> */}
