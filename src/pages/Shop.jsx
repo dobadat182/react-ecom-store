@@ -1,7 +1,31 @@
 import { Button } from '@/components/ui/button';
 import { ProductCard } from '@/features/products';
+import { getProducts } from '@/services/api';
+import { useEffect, useState } from 'react';
 
 const Shop = () => {
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        const fetchProducts = async () => {
+            setLoading(true);
+            setError(null);
+
+            try {
+                const products = await Promise.all([getProducts()]);
+                setProducts(products.data.products);
+            } catch (error) {
+                setError('Failed to load products.');
+            } finally {
+                setLoading(false);
+                console.log(products);
+            }
+        };
+        fetchProducts();
+    }, []);
+
     return (
         <div className="container px-5 shop-page">
             <div className="row">
@@ -10,9 +34,7 @@ const Shop = () => {
                 </h1>
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-x-5 gap-y-8 md:gap-y-10">
-                    {[...Array(11)].map((x, i) => (
-                        <ProductCard key={i} />
-                    ))}
+                    {products.map((product, index) => console.log(product))}
                 </div>
 
                 <div className="flex items-center justify-center m-10">

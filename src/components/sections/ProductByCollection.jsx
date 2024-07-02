@@ -3,6 +3,7 @@ import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { ProductCard } from '@/features/products';
 
 const ProductByCollection = ({ title, data }) => {
+    console.log(data);
     return (
         <section>
             <div className="container px-0">
@@ -15,7 +16,9 @@ const ProductByCollection = ({ title, data }) => {
                         className="flex items-center transition-colors duration-150 hover:text-blue-700"
                         href="/tat-ca"
                     >
-                        <span className="text-sm md:text-base ">View more</span>
+                        <span className="text-sm font-medium md:text-base ">
+                            View More
+                        </span>
                         <MoveRight className="inline-block ml-2" />
                     </a>
                 </div>
@@ -41,12 +44,7 @@ const ProductByCollection = ({ title, data }) => {
                     >
                         {data?.map((product) => (
                             <SplideSlide key={product.id}>
-                                <ProductCard
-                                    title={product.title}
-                                    image={product.thumbnail}
-                                    price={product.price}
-                                    description={product.description}
-                                />
+                                <ProductCard {...product} />
                             </SplideSlide>
                         ))}
                     </Splide>

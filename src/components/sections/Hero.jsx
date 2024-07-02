@@ -2,12 +2,7 @@ import styled from 'styled-components';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
-const Section = styled.section`
-    .splide__slide {
-        height: 50vh;
-        border-radius: 16px;
-    }
-`;
+const Section = styled.section``;
 
 function Hero({ data, loading }) {
     console.log('🚀 ~ Hero ~ loading:', loading);
@@ -19,7 +14,7 @@ function Hero({ data, loading }) {
                         {data.map((element, index) => (
                             <SplideSlide
                                 key={index} // Đảm bảo rằng mỗi phần tử có một key duy nhất
-                                className="overflow-hidden rounded-2xl"
+                                className="overflow-hidden rounded-2xl h-[60vh]"
                             >
                                 <div className="h-full bg-slate-100">
                                     <LazyLoadImage
@@ -29,7 +24,7 @@ function Hero({ data, loading }) {
                                     />
 
                                     <div className="absolute bottom-0 left-0 p-8">
-                                        <h2 className="text-2xl font-bold leading-7 text-gray-100 sm:truncate sm:text-3xl sm:tracking-tight">
+                                        <h2 className="text-2xl font-bold leading-7 text-slate-900 sm:truncate sm:text-3xl sm:tracking-tight">
                                             {element.alt_description ||
                                                 `BANNER ${index + 1}`}
                                         </h2>

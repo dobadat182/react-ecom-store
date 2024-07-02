@@ -40,8 +40,6 @@ const Home = () => {
             }
         };
 
-        getBanners();
-
         const fetchProducts = async () => {
             setLoading(true);
             setError(null);
@@ -63,6 +61,7 @@ const Home = () => {
             }
         };
 
+        getBanners();
         fetchProducts();
     }, []);
 

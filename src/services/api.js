@@ -18,6 +18,16 @@ export const apiInstance2 = axios.create({
     },
 });
 
+export const getProducts = async () => {
+    try {
+        const response = await axiosInstance.get('/products');
+        return response;
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        throw error;
+    }
+};
+
 // Hàm để lấy sản phẩm theo danh mục
 export const getProductsByCategory = async (category) => {
     try {
@@ -27,7 +37,7 @@ export const getProductsByCategory = async (category) => {
         return response.data.products;
     } catch (error) {
         console.error('Error fetching data:', error);
-        throw error; // Ném lỗi để xử lý ở nơi gọi hàm
+        throw error;
     }
 };
 
