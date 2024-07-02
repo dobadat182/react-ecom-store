@@ -13,13 +13,13 @@ const CollectionBySeason = () => {
                                 Category
                             </a>
                             <h2 className="text-5xl font-bold">
-                                TOP SUMMER CYCLING PICKS.
+                                TOP SUMMER EDITOR PICKS.
                             </h2>
                         </div>
                     </div>
                     <div className="grid grid-cols-2 gap-8 basis-2/3">
-                        <div className="h-full rounded-2xl bg-slate-50"></div>
-                        <div className="h-full rounded-2xl bg-slate-50"></div>
+                        <div className="h-full rounded-2xl bg-slate-100"></div>
+                        <div className="h-full rounded-2xl bg-slate-100"></div>
                     </div>
                 </div>
             </div>

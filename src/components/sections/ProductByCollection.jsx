@@ -1,12 +1,8 @@
-import { ArrowRight } from 'lucide-react';
+import { MoveRight } from 'lucide-react';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { ProductCard } from '@/features/products';
 
-const ProductByCollection = (props) => {
-    const { title } = props;
-    const data = props.data;
-
-    console.log(props.data);
+const ProductByCollection = ({ title, data }) => {
     return (
         <section>
             <div className="container px-0">
@@ -15,9 +11,12 @@ const ProductByCollection = (props) => {
                         {title || 'Title Section'}
                     </h2>
 
-                    <a className="flex items-center" href="/tat-ca">
-                        <span className="text-sm md:text-base">Xem thêm</span>
-                        <ArrowRight className="inline-block w-3 ml-1" />
+                    <a
+                        className="flex items-center transition-colors duration-150 hover:text-blue-700"
+                        href="/tat-ca"
+                    >
+                        <span className="text-sm md:text-base ">View more</span>
+                        <MoveRight className="inline-block ml-2" />
                     </a>
                 </div>
 
