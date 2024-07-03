@@ -14,8 +14,9 @@ const Shop = () => {
             setError(null);
 
             try {
-                const products = await Promise.all([getProducts()]);
-                setProducts(products.data.products);
+                const response = await getProducts();
+                setProducts(response.data);
+                console.log(products);
             } catch (error) {
                 setError('Failed to load products.');
             } finally {
@@ -26,6 +27,8 @@ const Shop = () => {
         fetchProducts();
     }, []);
 
+    console.log(products);
+
     return (
         <div className="container px-5 shop-page">
             <div className="row">
@@ -34,7 +37,9 @@ const Shop = () => {
                 </h1>
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-x-5 gap-y-8 md:gap-y-10">
-                    {products.map((product, index) => console.log(product))}
+                    {products.products?.map((product) => (
+                        <ProductCard key={product.id} {...product} />
+                    ))}
                 </div>
 
                 <div className="flex items-center justify-center m-10">

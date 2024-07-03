@@ -22,13 +22,6 @@ function Hero({ data, loading }) {
                                         alt="hero banner"
                                         src={element.urls.full}
                                     />
-
-                                    <div className="absolute bottom-0 left-0 p-8">
-                                        <h2 className="text-2xl font-bold leading-7 text-slate-900 sm:truncate sm:text-3xl sm:tracking-tight">
-                                            {element.alt_description ||
-                                                `BANNER ${index + 1}`}
-                                        </h2>
-                                    </div>
                                 </div>
                             </SplideSlide>
                         ))}
