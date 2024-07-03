@@ -9,6 +9,11 @@ function Layout() {
                 <Outlet /> {/* Đây là nơi các route con sẽ được render */}
                 <div className="absolute top-0 h-full w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] -z-50"></div>
             </main>
+            <footer className="p-5 text-center bg-slate-300">
+                <p className="text-base font-normal">
+                    ©2024 David Do. All rights reserved.
+                </p>
+            </footer>
         </>
     );
 }
