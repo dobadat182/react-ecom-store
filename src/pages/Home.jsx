@@ -13,10 +13,11 @@ const Spacer = lazy(() => import('@/components/common/Spacer'));
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { getProductsByCategory } from '@/services/api';
+import Policies from '@/components/sections/Policies';
 
 const Home = () => {
     const [motorcycleProducts, setMotorcycleProducts] = useState([]);
-    const [mensShirtsProducts, setMensShirtsProducts] = useState([]);
+    const [vehicleProducts, setVehicleProducts] = useState([]);
     const [menShoesProducts, setMenShoesProducts] = useState([]);
 
     const [banners, setBanners] = useState([]);
@@ -45,14 +46,14 @@ const Home = () => {
             setError(null);
 
             try {
-                const [motorcycle, mensShirts, menShoes] = await Promise.all([
+                const [motorcycle, vehicle, menShoes] = await Promise.all([
                     getProductsByCategory('motorcycle'),
-                    getProductsByCategory('mens-shirts'),
+                    getProductsByCategory('vehicle'),
                     getProductsByCategory('mens-shoes'),
                 ]);
 
                 setMotorcycleProducts(motorcycle);
-                setMensShirtsProducts(mensShirts);
+                setVehicleProducts(vehicle);
                 setMenShoesProducts(menShoes);
             } catch (error) {
                 setError('Failed to load products.');
@@ -60,7 +61,6 @@ const Home = () => {
                 setLoading(false);
             }
         };
-
         getBanners();
         fetchProducts();
     }, []);
@@ -73,6 +73,9 @@ const Home = () => {
                 <Hero data={banners} loading={loading} />
                 <Spacer />
 
+                <Policies />
+                <Spacer />
+
                 <CollectionBySeason />
                 <Spacer />
 
@@ -82,16 +85,10 @@ const Home = () => {
                 />
                 <Spacer />
 
-                <ProductByCollection
-                    title={"Men's Shirts"}
-                    data={mensShirtsProducts}
-                />
+                <ProductByCollection title={'Vehicle'} data={vehicleProducts} />
                 <Spacer />
 
-                <ProductByCollection
-                    title={"Men's Shoes"}
-                    data={menShoesProducts}
-                />
+                <ProductByCollection title={'Shoes'} data={menShoesProducts} />
                 <Spacer />
             </div>
         </Suspense>
