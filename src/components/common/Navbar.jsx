@@ -14,11 +14,7 @@ const Navbar = () => {
                     href="/"
                     className="flex items-center space-x-3 rtl:space-x-reverse"
                 >
-                    <img
-                        src="https://flowbite.com/docs/images/logo.svg"
-                        className="h-8"
-                        alt="Flowbite Logo"
-                    />
+                    <h3 className="font- font-lato">Ecoom</h3>
                     <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"></span>
                 </Link>
                 <div className="flex space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">

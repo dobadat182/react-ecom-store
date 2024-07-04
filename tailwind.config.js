@@ -16,6 +16,10 @@ module.exports = {
                 '2xl': '1400px',
             },
         },
+        fontFamily: {
+            roboto: ['Roboto', 'ui-sans', 'sans-serif'],
+            lato: ['Lato', 'ui-sans', 'sans-serif'],
+        },
         extend: {
             keyframes: {
                 'accordion-down': {
