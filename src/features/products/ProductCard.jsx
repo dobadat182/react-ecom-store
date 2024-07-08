@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { ShoppingBasket } from 'lucide-react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Link } from 'react-router-dom';
+import { addToCart, selectItemQuantity } from '../cart/cartSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Card = styled.div``;
 
@@ -36,16 +38,26 @@ const CardThumbnail = styled.div`
     }
 `;
 
-const ProductCard = ({ id, images, title, price, description }) => {
+const ProductCard = (props) => {
+    const { id, images, title, price, description } = props;
+
     function currencyFormat(num) {
         return '$' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
     }
+    const dispatch = useDispatch();
+
+    const addToCartHandler = (e) => {
+        e.preventDefault();
+        dispatch(addToCart(props));
+    };
+    // Sử dụng selector để lấy số lượng sản phẩm trong giỏ hàng
+    const quantity = useSelector((state) => selectItemQuantity(state, id));
 
     return (
         <Card className="product-card" data-id={id}>
-            <a
-                href=""
-                className="relative block overflow-hidden border shadow-sm product-thumbnail h-52 product-card--top md:h-80 rounded-2xl border-slate-200"
+            <Link
+                to={`/product-detail/${id}`}
+                className="relative block overflow-hidden border shadow-sm bg-slate-100 product-thumbnail h-52 product-card--top md:h-80 rounded-2xl border-slate-200"
             >
                 {images[0] && images[1] ? (
                     <CardThumbnail>
@@ -59,11 +71,21 @@ const ProductCard = ({ id, images, title, price, description }) => {
                         src={images[0]}
                     />
                 )}
-
-                <button className="absolute bottom-0 right-0 p-2 m-3 text-xs transition-transform duration-300 bg-blue-600 rounded-full text-slate-50 hover:-translate-y-1">
-                    <ShoppingBasket className="w-5 h-5" />
-                </button>
-            </a>
+                <div className="absolute bottom-0 right-0 flex flex-col items-center">
+                    <button
+                        type="button"
+                        onClick={addToCartHandler}
+                        className="relative p-2 m-3 text-xs transition-transform duration-300 bg-blue-600 rounded-full text-slate-50 hover:-translate-y-1"
+                    >
+                        <ShoppingBasket className="w-5 h-5" />
+                        {quantity > 0 && (
+                            <span className="absolute p-1 px-2 text-xs bg-red-500 rounded-full -top-2.5 left-6 text-red-50">
+                                {quantity}
+                            </span>
+                        )}
+                    </button>
+                </div>
+            </Link>
             <div className="mt-5 product-card-body">
                 <Link
                     to={`/product-detail/${id}`}

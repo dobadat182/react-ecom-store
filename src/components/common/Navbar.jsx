@@ -1,14 +1,38 @@
+import { selectTotalQuantity } from '@/features/cart/cartSlice';
 import {
     SignInButton,
     SignedIn,
     SignedOut,
     UserButton,
 } from '@clerk/clerk-react';
-import { Link } from 'react-router-dom';
+import { Menu, ShoppingCart } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { Link, NavLink } from 'react-router-dom';
 
 const Navbar = () => {
+    const totalQuantity = useSelector(selectTotalQuantity);
+    const [isSticky, setIsSticky] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 0) {
+                setIsSticky(true);
+            } else {
+                setIsSticky(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     return (
-        <nav className="sticky top-0 z-20 w-full bg-white border-b border-gray-200 dark:bg-gray-900 start-0 dark:border-gray-600">
+        <nav
+            className={`${isSticky ? 'fixed' : ''} top-0 z-20 w-full bg-white border-b border-gray-200 dark:bg-gray-900 start-0 dark:border-gray-600`}
+        >
             <div className="container flex flex-wrap items-center justify-between p-4 mx-auto">
                 <Link
                     href="/"
@@ -91,13 +115,39 @@ const Navbar = () => {
 
                     <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"></span>
                 </Link>
+
                 <div className="flex space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
-                    <SignedOut>
-                        <SignInButton className="px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" />
-                    </SignedOut>
-                    <SignedIn className="px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                        <UserButton />
-                    </SignedIn>
+                    <div className="flex gap-x-8">
+                        <Link
+                            to="/cart"
+                            className="flex items-center justify-center bg-white"
+                        >
+                            <div className="relative scale-75">
+                                <ShoppingCart
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    strokeWidth="1.5"
+                                    stroke="currentColor"
+                                    className="w-8 h-8 text-gray-600"
+                                />
+
+                                {totalQuantity > 0 && (
+                                    <span className="absolute -top-2 left-5 rounded-full bg-red-500 p-0.5 px-2 text-sm text-red-50">
+                                        {totalQuantity}
+                                    </span>
+                                )}
+                            </div>
+                        </Link>
+
+                        <div className="hidden md:block">
+                            <SignedOut>
+                                <SignInButton className="px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" />
+                            </SignedOut>
+                            <SignedIn className="px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                <UserButton />
+                            </SignedIn>
+                        </div>
+                    </div>
                     <button
                         data-collapse-toggle="navbar-sticky"
                         type="button"
@@ -106,44 +156,47 @@ const Navbar = () => {
                         aria-expanded="false"
                     >
                         <span className="sr-only">Open main menu</span>
-                        <svg
-                            className="w-5 h-5"
-                            aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 17 14"
-                        >
-                            <path
-                                stroke="currentColor"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M1 1h15M1 7h15M1 13h15"
-                            />
-                        </svg>
+                        <Menu className="w-5 h-5" />
                     </button>
                 </div>
                 <div
                     className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
                     id="navbar-sticky"
                 >
-                    <ul className="flex flex-col p-4 mt-4 font-medium border border-gray-100 rounded-lg md:p-0 bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                    <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg md:p-0 bg-gray-50 md:space-x-2 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                         <li>
-                            <Link
+                            <NavLink
                                 to="/"
-                                className="block px-3 py-2 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
+                                className={({ isActive }) =>
+                                    `${isActive ? 'font-semibold text-blue-700 bg-gray-100' : ''} block px-4 transition py-2 text-gray-900 rounded hover:bg-gray-100 md:hover:text-blue-700`
+                                }
                                 aria-current="page"
                             >
                                 Home
-                            </Link>
+                            </NavLink>
                         </li>
                         <li>
-                            <Link
+                            <NavLink
                                 to="/shop"
-                                className="block px-3 py-2 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                                className={({ isActive }) =>
+                                    `${isActive ? 'font-semibold text-blue-700 bg-gray-100' : ''} block px-4 transition py-2 text-gray-900 rounded hover:bg-gray-100 md:hover:text-blue-700`
+                                }
+                                aria-current="page"
                             >
                                 Shop
-                            </Link>
+                            </NavLink>
+                        </li>
+
+                        <li>
+                            <NavLink
+                                to="/cart"
+                                className={({ isActive }) =>
+                                    `${isActive ? 'font-semibold text-blue-700 bg-gray-100' : ''} block px-4 transition py-2 text-gray-900 rounded hover:bg-gray-100 md:hover:text-blue-700`
+                                }
+                                aria-current="page"
+                            >
+                                Cart
+                            </NavLink>
                         </li>
                     </ul>
                 </div>
