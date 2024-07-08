@@ -1,6 +1,7 @@
 import { MoveRight } from 'lucide-react';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { ProductCard } from '@/features/products';
+import { Link } from 'react-router-dom';
 
 const ProductByCollection = ({ title, data }) => {
     console.log(data);
@@ -12,7 +13,7 @@ const ProductByCollection = ({ title, data }) => {
                         {title || 'Title Section'}
                     </h2>
 
-                    <a
+                    <Link
                         className="flex items-center transition-colors duration-150 hover:text-blue-700"
                         href="/tat-ca"
                     >
@@ -20,7 +21,7 @@ const ProductByCollection = ({ title, data }) => {
                             View More
                         </span>
                         <MoveRight className="inline-block ml-2" />
-                    </a>
+                    </Link>
                 </div>
 
                 <div className="pl-5">

@@ -6,11 +6,17 @@ const Section = styled.section``;
 
 function Hero({ data, loading }) {
     console.log('🚀 ~ Hero ~ loading:', loading);
+    console.log('🚀 ~ Hero ~ loading:', loading);
     return (
         <Section>
             <div className="container flex gap-5">
                 <div className="w-full">
-                    <Splide aria-label="">
+                    <Splide
+                        aria-label=""
+                        options={{
+                            rewind: true,
+                        }}
+                    >
                         {data.map((element, index) => (
                             <SplideSlide
                                 key={index} // Đảm bảo rằng mỗi phần tử có một key duy nhất
