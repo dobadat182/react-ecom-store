@@ -1,5 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+// Hàm lưu trạng thái vào localStorage
+const saveStateToLocalStorage = (state) => {
+    try {
+        const serializedState = JSON.stringify(state);
+        localStorage.setItem('cart', serializedState);
+    } catch (e) {
+        console.warn('Could not save state', e);
+    }
+};
+
 const cartSlice = createSlice({
     name: 'cart',
     initialState: {
@@ -30,6 +40,9 @@ const cartSlice = createSlice({
                 existingItem.quantity++;
                 existingItem.totalPrice += newItem.price;
             }
+
+            // Lưu trạng thái vào localStorage
+            saveStateToLocalStorage(state);
         },
 
         removeFromCart(state, action) {
@@ -44,12 +57,20 @@ const cartSlice = createSlice({
                 existingItem.quantity--;
                 existingItem.totalPrice -= existingItem.price;
             }
+
+            // Lưu trạng thái vào localStorage
+            saveStateToLocalStorage(state);
         },
 
         clearCart(state) {
+            console.log(state);
+
             state.items = [];
             state.totalQuantity = 0;
             state.totalAmount = 0;
+
+            // Lưu trạng thái vào localStorage
+            saveStateToLocalStorage(state);
         },
     },
 });
