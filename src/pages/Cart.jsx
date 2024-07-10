@@ -21,20 +21,25 @@ const Cart = () => {
                 Clear Cart
             </button>
 
-            <div className="bg-slate-100 p-5 rounded-xl mb-7">
-                <h2>Your Cart</h2>
-                <p>Total Quantity: {totalQuantity}</p>
-                <p>Total Amount: {totalAmount} $</p>
-            </div>
+            <div className="flex gap-x-5">
+                <div className="basis-3/4 bg-slate-200">
+                    <div className="p-5 bg-slate-100 rounded-xl mb-7">
+                        <h2>Your Cart</h2>
+                        <p>Total Quantity: {totalQuantity}</p>
+                        <p>Total Amount: {totalAmount} $</p>
+                    </div>
 
-            <div className="flex flex-col gap-6">
-                {cartItems.length === 0 ? (
-                    <p>Cart is empty</p>
-                ) : (
-                    cartItems.map((item) => (
-                        <CartItem key={item.id} item={item} />
-                    ))
-                )}
+                    <div className="flex flex-col gap-6">
+                        {cartItems.length === 0 ? (
+                            <p>Cart is empty</p>
+                        ) : (
+                            cartItems.map((item) => (
+                                <CartItem key={item.id} item={item} />
+                            ))
+                        )}
+                    </div>
+                </div>
+                <div className="basis-1/4 bg-slate-100">Total</div>
             </div>
         </div>
     );
