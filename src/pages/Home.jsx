@@ -14,6 +14,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { getProductsByCategory } from '@/services/api';
 import Policies from '@/components/sections/Policies';
+import CartSidebar from '@/components/common/cart/CartSidebar';
 
 const Home = () => {
     const [motorcycleProducts, setMotorcycleProducts] = useState([]);
@@ -69,6 +70,8 @@ const Home = () => {
         <Suspense fallback={<div>Loading...</div>}>
             <div className="mt-10 home">
                 {error && <div>{error}</div>}
+
+                <CartSidebar />
 
                 <Hero data={banners} loading={loading} />
                 <Spacer />

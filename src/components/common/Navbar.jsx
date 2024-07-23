@@ -5,7 +5,7 @@ import {
     SignedOut,
     UserButton,
 } from '@clerk/clerk-react';
-import { Menu, ShoppingCart } from 'lucide-react';
+import { Menu, ShoppingBag, ShoppingCart } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
@@ -117,33 +117,25 @@ const Navbar = () => {
                 </Link>
 
                 <div className="flex space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
-                    <div className="flex gap-x-8">
+                    <div className="flex items-center gap-x-5">
                         <Link
                             to="/cart"
-                            className="flex items-center justify-center bg-white"
+                            className="flex items-center justify-center px-4 py-2 bg-blue-700 gap-x-2 rounded-xl hover:bg-blue-800"
                         >
-                            <div className="relative scale-75">
-                                <ShoppingCart
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    strokeWidth="1.5"
-                                    stroke="currentColor"
-                                    className="w-8 h-8 text-gray-600"
-                                />
+                            <ShoppingBag className="text-white" />
 
-                                {totalQuantity > 0 && (
-                                    <span className="absolute -top-2 left-5 rounded-full bg-red-500 p-0.5 px-2 text-sm text-red-50">
-                                        {totalQuantity}
-                                    </span>
-                                )}
-                            </div>
+                            {totalQuantity > 0 && (
+                                <span className="text-base text-white">
+                                    {totalQuantity}
+                                </span>
+                            )}
                         </Link>
 
-                        <div className="hidden md:block">
+                        <div className="items-center hidden md:flex">
                             <SignedOut>
-                                <SignInButton className="px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" />
+                                <SignInButton className="px-4 py-2 text-base font-medium text-center text-gray-900 border rounded-xl" />
                             </SignedOut>
-                            <SignedIn className="px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            <SignedIn className="px-4 py-2 text-base font-medium text-center text-gray-900 border rounded-xl">
                                 <UserButton />
                             </SignedIn>
                         </div>

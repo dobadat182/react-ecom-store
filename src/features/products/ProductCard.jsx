@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ShoppingBasket } from 'lucide-react';
+import { ShoppingBasket, ShoppingCart } from 'lucide-react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Link } from 'react-router-dom';
 import { addToCart, selectItemQuantity } from '../cart/cartSlice';
@@ -75,11 +75,11 @@ const ProductCard = (props) => {
                     <button
                         type="button"
                         onClick={addToCartHandler}
-                        className="relative p-2 m-3 text-xs transition-transform duration-300 bg-blue-600 rounded-full text-slate-50 hover:-translate-y-1"
+                        className="relative p-2 m-3 text-xs transition-transform duration-300 bg-blue-600 rounded-xl text-slate-50 hover:-translate-y-1"
                     >
-                        <ShoppingBasket className="w-5 h-5" />
+                        <ShoppingCart className="w-5 h-5" />
                         {quantity > 0 && (
-                            <span className="absolute p-1 px-2 text-xs bg-red-500 rounded-full -top-2.5 left-6 text-red-50">
+                            <span className="absolute w-5 h-5 flex items-center justify-center text-xs bg-red-500 rounded-full -top-2.5 left-6 text-red-50">
                                 {quantity}
                             </span>
                         )}

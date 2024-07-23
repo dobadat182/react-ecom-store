@@ -16,11 +16,13 @@ const cartSlice = createSlice({
         items: [],
         totalQuantity: 0,
         totalAmount: 0,
+        sideBar: false,
     },
 
     reducers: {
         addToCart(state, action) {
             const newItem = action.payload;
+
             const existingItem = state.items.find(
                 (item) => item.id === newItem.id
             );
@@ -31,6 +33,7 @@ const cartSlice = createSlice({
             if (!existingItem) {
                 state.items.push({
                     id: newItem.id,
+                    images: newItem.images,
                     title: newItem.title,
                     price: newItem.price,
                     quantity: 1,
@@ -72,15 +75,24 @@ const cartSlice = createSlice({
             // Lưu trạng thái vào localStorage
             saveStateToLocalStorage(state);
         },
+
+        toggleSidebar(state, action) {
+            state.sideBar = action.payload; // Nhận giá trị từ payload
+            saveStateToLocalStorage(state);
+        },
     },
 });
 
-export const { addToCart, removeFromCart, clearCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, clearCart, toggleSidebar } =
+    cartSlice.actions;
 export default cartSlice.reducer;
 
-// Selector để lấy số lượng sản phẩm theo ID
+/* ------------- Selector ------------- */
 export const selectItemQuantity = (state, productId) =>
     state.cart.items.find((item) => item.id === productId)?.quantity || 0;
 
-// Selector để lấy tổng số lượng sản phẩm
+export const selectSidebarState = (state) => state.cart.sideBar;
+
+export const selectItems = (state) => state.cart.items;
+
 export const selectTotalQuantity = (state) => state.cart.totalQuantity;
