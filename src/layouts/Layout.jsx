@@ -1,5 +1,6 @@
 import Navbar from '@/components/common/Navbar';
 import { Outlet } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 
 function Layout() {
     return (
@@ -14,6 +15,7 @@ function Layout() {
                     ©2024 David Do. All rights reserved.
                 </p>
             </footer>
+            <Analytics />
         </div>
     );
 }
